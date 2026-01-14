@@ -51,3 +51,8 @@ TO-DO-LIST/
 1. Tasks are stored as objects:
    ```js
    { id, name, done }
+
+
+
+   git clone https://github.com/zaiddrf/TO-DO-LIST.git
+
