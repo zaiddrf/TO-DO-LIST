@@ -1,0 +1,303 @@
+/* =========================
+   0) Reset عام + قواعد مشتركة
+   ========================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --main:#00a7b5;
+  --main2:#1b6e74;
+  --danger:#d61c1c;
+  --gray:#ddd;
+}
+
+/* تغيير حجم الخط حسب حجم الشاشة */
+body { font-size: 18px; }
+@media (max-width: 768px) { body { font-size: 14px; } }
+@media (min-width: 769px) and (max-width: 1024px) { body { font-size: 16px; } }
+
+/* =========================
+   1) قسم إضافة مهمة (العلوي)
+   ========================= */
+.ToDo-table{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:2%;
+}
+.ToDo-table h1{ text-align:center; margin-bottom:1%; }
+
+/* الصندوق الذي يحتوي الإدخال والزر */
+.input-list{
+  width:min(860px, 86%);
+  border:1px solid gray;
+  margin:0 7% 2%;
+  padding:10px;
+  border-radius:8px;
+}
+
+/* صف الإدخال: أيقونة + input (كان ناقص عندك) */
+.input-list > div{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* الأيقونة */
+.input-list i{
+  color:#fff;
+  background:var(--main);
+  padding:10px 12px;
+  border-radius:6px;
+}
+
+/* رسالة التنبيه */
+.input-list p{
+  margin:8px 0 0;
+  font-family:"Times New Roman", Times, serif;
+}
+
+/* حقل الإدخال داخل هذا القسم فقط */
+.input-list input{
+  flex:1;
+  width:auto;
+  padding:10px;
+  border:1px solid darkgray;
+  border-radius:6px;
+  outline:none;
+  font-size:16px;
+}
+
+/* زر إضافة مهمة */
+.input-list button{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:0;
+  border-radius:6px;
+  cursor:pointer;
+  background:var(--main);
+  color:rgb(244, 244, 1);
+  transition:.2s;
+}
+.input-list button:hover{ background:var(--main2); }
+.input-list button:active{ background:#f3efef; color:#000; }
+
+/* =========================
+   2) أزرار الفلترة (All / Done / To Do)
+   ========================= */
+.buuton-contanir h1{
+  margin:1%;
+  text-align:center;
+  font-family:"Gill Sans","Gill Sans MT",Calibri,"Trebuchet MS",sans-serif;
+}
+
+.buuton-contanir .buttonPosition{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-top:.7%;
+  flex-wrap:wrap;
+}
+
+.buuton-contanir .buttonPosition button{
+  width:min(220px, 28%);
+  padding:10px 14px;
+  border:0;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:16px;
+  text-transform:uppercase;
+  background:var(--main);
+  color:#fff;
+  transition:.3s;
+}
+.buuton-contanir .buttonPosition button:hover{ background:#008a94; }
+.buuton-contanir .buttonPosition button:focus{ background:var(--main2); outline: none; }
+
+/* =========================
+   3) قائمة المهام + سكرول
+   ========================= */
+.task-container{
+  width:min(860px, 86%);
+  margin:0 auto;
+  padding:14px;
+  border:1px solid var(--gray);
+  box-shadow:0 4px 6px rgba(0,0,0,.1);
+  font-family:Arial, sans-serif;
+  max-height:350px;
+  overflow-y:auto;
+  border-radius:8px;
+
+  scrollbar-width:thin;
+  scrollbar-color:var(--main) #f0f0f0;
+}
+
+.task-container::-webkit-scrollbar{ width:8px; }
+.task-container::-webkit-scrollbar-thumb{
+  background:var(--main);
+  border-radius:4px;
+  transition:.3s;
+}
+.task-container::-webkit-scrollbar-thumb:hover{ background:#aaa; }
+
+/* الـ UL نفسه (كان عندك class task-list لكن بالـ HTML عندك #todoList) */
+#todoList{ list-style:none; margin:0; padding:0; }
+
+/* شكل عنصر المهمة */
+.task-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:#f9f9f9;
+  border:1px solid var(--gray);
+  border-radius:8px;
+  padding:10px 12px;
+  margin-bottom:10px;
+  transition:.2s;
+}
+
+
+.task-checkbox{
+  width:17px; height:17px;
+  cursor:pointer;
+}
+
+/* اسم المهمة */
+.task-name{
+  flex:1;
+  font-size:16px;
+  margin:0;
+  text-align:left;
+  word-break:break-word;
+}
+.task-name.done{ text-decoration:line-through; color:red; }
+
+/* أزرار التعديل والحذف */
+.actions{ display:flex; gap:10px; }
+
+.edit-button, .delete-button{
+  background:none;
+  border:0;
+  cursor:pointer;
+  font-size:18px;
+  padding:6px;
+  border-radius:6px;
+  transition:.2s;
+}
+.edit-button:hover{ background:#ffe58f; transform:scale(1.05); }
+.delete-button:hover{ background:#ffcccc; transform:scale(1.05); }
+.edit-button i{ color:#ffd43b; }
+.delete-button i{ color:red; }
+.edit-button:hover i, .delete-button:hover i{ opacity:.85; }
+
+/* رسالة في حال ما في مهام */
+.no-tasks-message{
+  color:gray;
+  text-align:center;
+  font-style:italic;
+  padding:10px 0;
+}
+
+/* =========================
+   4) النوافذ المنبثقة (Modal) للتعديل والحذف
+   ========================= */
+.modalE, .modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:rgba(0,0,0,.4);
+  justify-content:center;
+  align-items:center;
+  padding:14px;
+}
+
+.modal-contentE, .modal-content{
+  width:min(420px, 92%);
+  background:#fff;
+  border:1px solid #888;
+  border-radius:10px;
+  padding:20px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* حقل الإدخال داخل المودال */
+#editTaskInput{
+  width:100%;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+/* ترتيب أزرار المودال */
+.button-container{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+}
+
+/* زر إلغاء تعديل + زر حفظ */
+.close-btn, .saveBut{
+  width:120px;
+  padding:10px;
+  border:0;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.close-btn{ background:#f30909; color:#f4efef; }
+.close-btn:hover{ background:#f80404; transform:scale(1.05); }
+
+.saveBut{ background:#008a94; color:#fff; }
+.saveBut:hover{ background:var(--main); transform:scale(1.05); }
+
+/* أزرار تأكيد/إلغاء الحذف */
+.caDel, .coDel{
+  border:0;
+  padding:10px 14px;
+  border-radius:8px;
+  color:#ede9e9;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.caDel{ background:#8d8d8d; }
+.caDel:hover{ background:#565656d0; transform:scale(1.05); }
+
+.coDel{ background:#cf2626; }
+.coDel:hover{ background:#dd4242d0; transform:scale(1.05); }
+
+/* =========================
+   5) أزرار الحذف الجماعي (Delete All / Done)
+   ========================= */
+.deletBuuton{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin:20px 0 30px;
+  flex-wrap:wrap;
+}
+
+.deletBuuton button{
+  width:min(320px, 40%);
+  padding:10px 14px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:1em;
+  text-transform:uppercase;
+  background:var(--danger);
+  color:#fff;
+  transition:.2s;
+}
+
+.deletBuuton button:hover{ background:#ff0000; }
+.deletBuuton button:disabled{ background:#9e5959; cursor:not-allowed; }

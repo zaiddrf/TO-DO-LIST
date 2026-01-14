@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- إعدادات أساسية للصفحة -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ملفات التنسيق والأيقونات -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- أيقونة التبويب وعنوان الصفحة -->
+  <link rel="icon" href="todo-icon-1024x1024-7nszgsj6.png">
+  <title>To Do list</title>
+</head>
+
+<body>
+
+  <!-- ===================== -->
+  <!-- (1) قسم إضافة مهمة جديدة -->
+  <!-- ===================== -->
+  <section class="ToDo-table">
+    <h1>Todo Input</h1>
+
+    <div class="input-list">
+      <!-- صف الإدخال: أيقونة + حقل نص -->
+      <div>
+        <i class="fa-solid fa-book" aria-hidden="true"></i>
+        <input id="myInput" type="text" placeholder="New Todo" autocomplete="on">
+      </div>
+
+      <!-- رسالة تنبيه أو خطأ للمستخدم -->
+      <p id="inputVal"></p>
+
+      <!-- زر إضافة المهمة -->
+      <button id="addTaskButton" type="button">Add New Task</button>
+    </div>
+  </section>
+  
+
+  <!-- ===================== -->
+  <!-- (2) أزرار الفلترة (عرض المهام) -->
+  <!-- ===================== -->
+  <section class="buuton-contanir">
+    <h1>To Do List</h1>
+
+    <div class="buttonPosition">
+      <button id="showAll" type="button">All</button>
+      <button id="showDone" type="button">Done</button>
+      <button id="showTodo" type="button">To Do</button>
+    </div>
+  </section>
+
+  <!-- ===================== -->
+  <!-- (3) قائمة المهام -->
+  <!-- ===================== -->
+  <section class="task-container">
+    <ul id="todoList"></ul>
+  </section>
+  
+
+  <!-- ===================== -->
+  <!-- (4) نافذة تعديل المهمة -->
+  <!-- ===================== -->
+  <div id="editTaskModal" class="modalE">
+    <div class="modal-contentE">
+      <h3>Edit Task</h3>
+
+      <input id="editTaskInput" type="text" placeholder="Edit your task...">
+
+      <div class="button-container">
+        <button id="saveEditButton" class="saveBut" type="button">Save</button>
+        <button class="close-btn" type="button">Cancel</button>
+      </div>
+
+      <p id="demo"></p>
+    </div>
+  </div>
+
+  <!-- ===================== -->
+  <!-- (5) أزرار الحذف الجماعي -->
+  <!-- ===================== -->
+  <div class="deletBuuton">
+    <button id="deletdoneButton" type="button">Delete Done Tasks</button>
+    <button id="deletallButton" type="button">Delete All Tasks</button>
+  </div>
+
+  <!-- ===================== -->
+  <!-- (6) نافذة تأكيد الحذف -->
+  <!-- ===================== -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <h2>Delete Confirmation</h2>
+
+      <p id="deleteModalText">هل انت متاكد من انك بدك تحذف؟</p>
+
+      <div class="button-container">
+        <button id="confirmDelete" class="coDel" type="button">Delete</button>
+        <button id="cancelDelete" class="caDel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
